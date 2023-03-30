@@ -13,8 +13,8 @@
 <body>
 <h1>Log In</h1>
 <form action="AuthServlet" method="POST">
-    Username: <input type="text" name="username" value=""/>
-    Password: <input type="password" name="password" value=""/>
+    Username: <input type="text" name="username" value=""/><br><br>
+    Password: <input type="password" name="password" value=""/><br><br>
     <button type="submit">Log In</button>
 </form>
 </body>

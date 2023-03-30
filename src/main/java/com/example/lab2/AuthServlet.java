@@ -14,6 +14,16 @@ public class AuthServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
 
+        if("admin".equals(username) && "admin".equals(password)) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", "admin");
+            response.sendRedirect("edit-categories");
+        }
+        else {
+            response.sendRedirect("WrongCredentials.jsp");
+        }
     }
 }
