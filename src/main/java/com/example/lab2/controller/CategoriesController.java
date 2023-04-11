@@ -1,5 +1,6 @@
-package com.example.lab2;
+package com.example.lab2.controller;
 
+import com.example.lab2.data.model.Category;
 import com.example.lab2.data.repository.CategoryRepository;
 import com.example.lab2.data.repository.CategoryRepositoryImpl;
 
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
+import java.util.logging.Logger;
 
-@WebServlet(name = "categoriesController", value = "/view-categories")
+@WebServlet(name = "categoriesController", value = "/categories")
 public class CategoriesController extends HttpServlet {
 
     private CategoryRepository categoryRepository;
