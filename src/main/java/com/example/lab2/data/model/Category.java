@@ -80,4 +80,24 @@ public class Category {
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
+
+    public Set<Product> allProducts() {
+        Set<Product> products = new HashSet<>(getProducts());
+        if (!subCategories.isEmpty()) {
+            for (Category category : subCategories) {
+                products.addAll(category.allProducts());
+            }
+        }
+        return products;
+    }
+
+    public Set<Category> allCategories() {
+        Set<Category> categories = new HashSet<>(getSubCategories());
+        if (!subCategories.isEmpty()) {
+            for (Category category : subCategories) {
+                categories.addAll(category.subCategories);
+            }
+        }
+        return categories;
+    }
 }
