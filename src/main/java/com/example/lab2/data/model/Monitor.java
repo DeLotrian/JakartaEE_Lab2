@@ -48,4 +48,11 @@ public class Monitor extends Product {
     public void setInches(double inches) {
         this.inches = inches;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Monitor monitor) {
+            return this.getId() == monitor.getId();
+        } else return false;
+    }
 }

@@ -73,4 +73,11 @@ public class Pc extends Product {
     public void setGpu(int gpu) {
         this.gpu = gpu;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Pc pc) {
+            return this.getId() == pc.getId();
+        } else return false;
+    }
 }

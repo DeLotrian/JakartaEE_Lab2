@@ -31,8 +31,8 @@ public class DataSource {
         ));
 
         Category cars = new Category("Cars", Set.of(sedans, suvs), null);
-        sedans.setParentCategory(cars);
-        suvs.setParentCategory(cars);
+        //sedans.setParentCategory(cars);
+        //suvs.setParentCategory(cars);
 
         categories.add(cars); // adding to the main categories list
 

@@ -2,15 +2,17 @@ package com.example.lab2.data.repository;
 
 import com.example.lab2.data.model.Category;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface CategoryRepository {
     Optional<Category> findById(long id);
-    Iterable<Category> findAll();
+    List<Category> findAll();
 
-    Iterable<Category> findTopLevelCategories();
+    List<Category> findTopLevelCategories();
 
-    Iterable<Category> findByName(String name);
+    List<Category> findByName(String name);
     Category save(Category category);
     Category delete(Category category);
     Category deleteById(long id);

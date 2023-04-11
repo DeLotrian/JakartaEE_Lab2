@@ -100,4 +100,15 @@ public class Category {
         }
         return categories;
     }
+
+    public boolean deleteProduct(Product product) {
+        boolean result = products.remove(product);
+        if (!result && !subCategories.isEmpty()) {
+            for (Category category : subCategories) {
+                result = category.deleteProduct(product);
+                if (result) break;
+            }
+        }
+        return result;
+    }
 }

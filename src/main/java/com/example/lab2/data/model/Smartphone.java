@@ -73,4 +73,11 @@ public class Smartphone extends Product {
     public void setCamera(int camera) {
         this.camera = camera;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Smartphone smartphone) {
+            return this.getId() == smartphone.getId();
+        } else return false;
+    }
 }

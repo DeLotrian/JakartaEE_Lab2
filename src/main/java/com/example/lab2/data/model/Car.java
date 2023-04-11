@@ -72,4 +72,19 @@ public class Car extends Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Car car) {
+            return this.getId() == car.getId();
+        } else return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{ " +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                " }";
+    }
 }

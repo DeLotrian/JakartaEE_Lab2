@@ -2,6 +2,7 @@ package com.example.lab2.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 //@Entity
 //@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -48,5 +49,12 @@ public abstract class Product implements Serializable {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Product pr) {
+            return Objects.equals(this.id, pr.id);
+        } else return false;
     }
 }

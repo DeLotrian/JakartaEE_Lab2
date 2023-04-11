@@ -61,4 +61,11 @@ public class Laptop extends Product {
     public void setHdd(int hdd) {
         this.hdd = hdd;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Laptop laptop) {
+            return this.getId() == laptop.getId();
+        } else return false;
+    }
 }

@@ -4,9 +4,7 @@ import com.example.lab2.data.DataSource;
 import com.example.lab2.data.model.Category;
 import com.example.lab2.utils.Constants;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class CategoryRepositoryImpl implements CategoryRepository {
@@ -16,8 +14,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public Iterable<Category> findAll() {
-        Set<Category> categories = new HashSet<>(DataSource.categories);
+    public List<Category> findAll() {
+        List<Category> categories = new ArrayList<>(DataSource.categories);
         for (Category category : DataSource.categories) {
             categories.addAll(category.allCategories());
         }
@@ -25,12 +23,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public Iterable<Category> findTopLevelCategories() {
+    public List<Category> findTopLevelCategories() {
         return DataSource.categories;
     }
 
     @Override
-    public Iterable<Category> findByName(String name) {
+    public List<Category> findByName(String name) {
         return DataSource.categories.stream().filter(category -> category.getName().equals(name)).collect(Collectors.toList());
     }
 
