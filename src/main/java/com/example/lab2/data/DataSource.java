@@ -31,8 +31,8 @@ public class DataSource {
         ));
 
         Category cars = new Category("Cars", Set.of(sedans, suvs), null);
-        //sedans.setParentCategory(cars);
-        //suvs.setParentCategory(cars);
+        sedans.setParentCategory(cars);
+        suvs.setParentCategory(cars);
 
         categories.add(cars); // adding to the main categories list
 
@@ -88,6 +88,12 @@ public class DataSource {
                         "https://content2.rozetka.com.ua/goods/images/big/318248429.jpg", "HP" , "Pavilion", 16, 1024)
         ));
 
-        categories.add(new Category("Electronics", Set.of(monitors, smartphones, pcs, laptops), null));
+        Category electronics = new Category("Electronics", Set.of(monitors, smartphones, pcs, laptops), null);
+        monitors.setParentCategory(electronics);
+        smartphones.setParentCategory(electronics);
+        pcs.setParentCategory(electronics);
+        laptops.setParentCategory(electronics);
+
+        categories.add(electronics);
     }
 }

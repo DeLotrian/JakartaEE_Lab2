@@ -35,6 +35,7 @@ public class CategoryController extends HttpServlet {
             if (category.isPresent()) {
                 System.out.println("object is present");
                 request.setAttribute("category", category.get());
+                request.setAttribute("products", category.get().allProducts());
                 request.getRequestDispatcher("../WEB-INF/jsp/category.jsp").forward(request, resp);
             } else {
                 System.out.println("not found");
@@ -45,7 +46,7 @@ public class CategoryController extends HttpServlet {
             e.printStackTrace();
             System.out.println("error happened");
             Logger.getGlobal().log(Level.FINE, "Something happened", e);
-            request.getRequestDispatcher("..WEB-INF/jsp/error_happened.jsp").forward(request, resp);
+            request.getRequestDispatcher("../WEB-INF/jsp/error_happened.jsp").forward(request, resp);
         }
     }
 }

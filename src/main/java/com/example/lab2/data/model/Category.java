@@ -3,7 +3,9 @@ package com.example.lab2.data.model;
 import com.example.lab2.utils.Constants;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 //@Entity
@@ -81,8 +83,8 @@ public class Category {
         this.products = products;
     }
 
-    public Set<Product> allProducts() {
-        Set<Product> products = new HashSet<>(getProducts());
+    public List<Product> allProducts() {
+        List<Product> products = new ArrayList<>(getProducts());
         if (!subCategories.isEmpty()) {
             for (Category category : subCategories) {
                 products.addAll(category.allProducts());
