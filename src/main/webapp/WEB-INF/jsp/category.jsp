@@ -56,12 +56,6 @@
             font-size: 1.1em;
             padding: 15px 30px;
         }
-        .card {
-            width: 350px;
-            height: 400px;
-            background-color: #F9F9F9;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        }
         .d-row {
             display: flex;
             flex-direction: row;
@@ -81,7 +75,16 @@
             font-weight: bold;
         }
         #cards-container {
-
+            display: flex;
+            justify-content: flex-start;
+        }
+        .card {
+            width: 350px;
+            height: 400px;
+            background-color: #F9F9F9;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            margin-right: 30px;
+            margin-bottom: 30px;
         }
         .card-img {
             width: 310px;
@@ -126,11 +129,11 @@
                 ${category.name}
             </p>
             <div id="cards-container" class="d-column">
-                <c:if test="${product.isEmpty()}">
+                <c:if test="${products.isEmpty()}">
                     Sorry, there is no products in this category
                 </c:if>
                 <c:if test="${!products.isEmpty()}">
-                    <c:forEach items="product" var="products">
+                    <c:forEach var="product" items="${products}">
                         <div class="card d-column align-center">
                             <img src="${product.photoUrl}" alt="${product.description}" class="card-img"/>
 
