@@ -20,14 +20,21 @@ public class CategoryRepositoryTest {
     @Test
     public void testIsNumberOfCategoriesCorrect() {
         CategoryRepository categoryRepository = new CategoryRepositoryImpl();
-        List<Category> categories = IterableUtils.toList(categoryRepository.findAll());
+        List<Category> categories = categoryRepository.findAll();
         Assertions.assertEquals(8, categories.size());
     }
 
     @Test
     public void testTopLevelCategoriesNumberIsCorrect() {
         CategoryRepository categoryRepository = new CategoryRepositoryImpl();
-        List<Category> categories = IterableUtils.toList(categoryRepository.findTopLevelCategories());
+        List<Category> categories = categoryRepository.findTopLevelCategories();
         Assertions.assertEquals(2, categories.size());
+    }
+
+    @Test
+    public void assertFindsByName() {
+        CategoryRepository categoryRepository = new CategoryRepositoryImpl();
+        Category category = categoryRepository.findByName("Sedans").orElse(null);
+        Assertions.assertNotNull(category);
     }
 }

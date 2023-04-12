@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class CategoryRepositoryImpl implements CategoryRepository {
     @Override
     public Optional<Category> findById(long id) {
-        return DataSource.categories.stream().filter(category -> category.getId() == id).findFirst();
+        return findAll().stream().filter(category -> Objects.equals(category.getId(), id)).findFirst();
     }
 
     @Override
@@ -28,8 +28,8 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     }
 
     @Override
-    public List<Category> findByName(String name) {
-        return DataSource.categories.stream().filter(category -> category.getName().equals(name)).collect(Collectors.toList());
+    public Optional<Category> findByName(String name) {
+        return findAll().stream().filter(category -> category.getName().equals(name)).findFirst();
     }
 
     @Override

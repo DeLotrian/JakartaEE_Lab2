@@ -24,7 +24,7 @@ public class Car extends Product {
 
     public Car() {}
 
-    public Car(String description, String photoUrl, String make, String model, int year, int mileage, double price) {
+    public  Car(String description, String photoUrl, String make, String model, int year, int mileage, double price) {
         super(description, photoUrl);
         this.make = make;
         this.model = model;

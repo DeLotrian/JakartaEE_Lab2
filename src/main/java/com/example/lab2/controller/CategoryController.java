@@ -28,23 +28,18 @@ public class CategoryController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
         String name = request.getParameter("name");
-        String idString = request.getParameter("id");
         try {
-            long id = Long.parseLong(idString);
-            Optional<Category> category = categoryRepository.findById(id);
+            Optional<Category> category = categoryRepository.findByName(name);
             if (category.isPresent()) {
-                System.out.println("object is present");
                 request.setAttribute("category", category.get());
                 request.setAttribute("products", category.get().allProducts());
                 request.getRequestDispatcher("../WEB-INF/jsp/category.jsp").forward(request, resp);
             } else {
-                System.out.println("not found");
                 Logger.getGlobal().log(Level.FINE, "Not found, redirecting");
                 request.getRequestDispatcher("../WEB-INF/jsp/not_found.jsp").forward(request, resp);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("error happened");
             Logger.getGlobal().log(Level.FINE, "Something happened", e);
             request.getRequestDispatcher("../WEB-INF/jsp/error_happened.jsp").forward(request, resp);
         }

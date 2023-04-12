@@ -12,7 +12,7 @@ public interface CategoryRepository {
 
     List<Category> findTopLevelCategories();
 
-    List<Category> findByName(String name);
+    Optional<Category> findByName(String name);
     Category save(Category category);
     Category delete(Category category);
     Category deleteById(long id);

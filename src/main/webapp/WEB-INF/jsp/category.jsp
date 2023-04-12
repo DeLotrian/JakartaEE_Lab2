@@ -25,7 +25,7 @@
             margin: 0;
             padding: 0;
             padding-top: 30px;
-            height: 100vh;
+            align-self: stretch;
             width: 250px !important;
             background: darkgrey;
         }
@@ -75,26 +75,26 @@
             font-weight: bold;
         }
         #cards-container {
-            display: flex;
-            justify-content: flex-start;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
         }
         .card {
             width: 350px;
-            height: 400px;
+            height: 300px;
             background-color: #F9F9F9;
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             margin-right: 30px;
             margin-bottom: 30px;
+            padding: 20px;
         }
         .card-img {
-            width: 310px;
             height: 200px;
-            margin-top: 20px;
-            object-fit: contain;
+            width: auto;
+            object-fit: cover;
         }
-        /* cover */
+        /* cover | contain */
         .card-desc {
-            padding: 10px;
+            padding: 20px 0 10px 0;
             font-weight: bold;
             color: #151515;
             margin: 0;
@@ -103,7 +103,10 @@
             font-size: 0.95em;
             color: #222222;
             margin: 0;
-            padding: 5px 10px;
+            padding: 5px 10px 5px 0;
+        }
+        .justify-self-center {
+            justify-self: center !important;
         }
     </style>
 </head>
@@ -115,7 +118,7 @@
                 <ul>
                     <c:forEach var="cat" items="${category.subCategories}">
                         <li>
-                            <a class="category-list-item" href="./categories/category?name=${cat.name}&id=${cat.id}">${cat.name}</a>
+                            <a class="category-list-item" href="../categories/category?name=${cat.name} ">${cat.name}</a>
                         </li>
                     </c:forEach>
                 </ul>
@@ -128,18 +131,24 @@
                 </c:if>
                 ${category.name}
             </p>
-            <div id="cards-container" class="d-column">
+            <div id="cards-container">
                 <c:if test="${products.isEmpty()}">
                     Sorry, there is no products in this category
                 </c:if>
                 <c:if test="${!products.isEmpty()}">
                     <c:forEach var="product" items="${products}">
-                        <div class="card d-column align-center">
+                        <div class="card d-column">
                             <img src="${product.photoUrl}" alt="${product.description}" class="card-img"/>
 
                             <p class="card-desc">${product.description}</p>
 
-                            <c:out value="${product.getClass().getName()}"/>
+                            <c:if test="${product.getClass().getName().equals(\"com.example.lab2.data.model.Car\")}">
+                                <p class="card-body"><strong>Mileage:</strong> <c:out value="${product.mileage}"/></p>
+                            </c:if>
+
+                            <c:if test="${product.getClass().getName().equals(\"com.example.lab2.data.model.Car\")}">
+                                <p class="card-body"><strong>Price:</strong> $<c:out value="${product.price}"/></p>
+                            </c:if>
 
 <%--                            <p class="card-body"></p>--%>
                         </div>
